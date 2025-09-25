@@ -60,41 +60,7 @@ const init = () => {
     questionEl.innerText = currentWord
   }
 
-  updateQuestion()
-  render()
-}
-const render = () => {
-  checkAnswer()
-  wrongAnswers()
-}
-const checkAnswer = () => {
-  if (currentWord == inputValue) {
-    winner = true
-    checkWinner()
-  } else {
-    return
-  }
-}
 
-const checkWinner = () => {
-  if (winner) {
-    messageEl.innerText = "Congrats !! You're Genius"
-  }
-}
-
-const wrongAnswers = () => {
-  if (inputValue !== currentWord) {
-    !winner
-    loser()
-    // } else {
-  }
-}
-
-const loser = () => {
-  if (!winner) {
-    messageEl.innerText = "LOser"
-  }
-}
 
 // Events
 
