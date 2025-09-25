@@ -14,26 +14,25 @@
   <body>
     <div class="hangman0">
       <img
-        src="https://www.cs.cmu.edu/~cburch/hang/hang00.gif"
+        src="https://www.shutterstock.com/image-vector/cartoon-stickman-stick-figure-man-260nw-2120145698.jpg"
         alt="hangman0"
       />
+      <!-- https://www.cs.cmu.edu/~cburch/hang/hang00.gif -->
     </div>
     <section class="wordsContainer">
-      <div id="guessWord">
-        <h4>Word :</h4>
+      <h3 class="message">Message :</h3>
+      <div>
+        <h3 class="question">Word :</h3>
       </div>
-      <div id="missedWords">
-        <h4>Missing :</h4>
+      <div>
+        <h3 class="incorrectWord">Missing :</h3>
       </div>
-      <div id="inputWord">
-        <h4><input type="text" /></h4>
+      <div>
+        <h4><input class="myInput" type="text" /></h4>
+        <button onClick="saveInput()">Submit</button>
       </div>
     </section>
-    <div class="Submit">
-      <button>Submit</button>
-    </div>
-    <div class="reset">
-      <button>Reset</button>
-    </div>
+
+    <button class="reset">Reset</button>
   </body>
 </html>

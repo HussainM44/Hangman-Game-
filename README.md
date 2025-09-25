@@ -1,4 +1,4 @@
-#Hangman Details#
+####Hangman Details####
 
 
 ***Html***
@@ -9,7 +9,7 @@ the user input(guessed letter or word) and the buttons for submit and reset.
 
 ***Js***
 
-The element constants will be created to select html items i.e hangman ,words ,suumit .
+The element constants will be created to select html items i.e hangman ,words ,submit .
 
 
 There should be an array of words that will be guessed and to choose the word (.random) to the array will be used.
