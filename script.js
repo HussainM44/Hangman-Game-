@@ -6,7 +6,7 @@ let inputValue
 let currentWord
 
 const saveInput = () => {
-  inputValue = myWordEl.value
+  inputValue = [myWordEl.value]
   render()
 }
 
@@ -53,14 +53,29 @@ const init = () => {
     "frog",
   ]
 
-  winner = false
-
   const updateQuestion = () => {
     currentWord = guessWords[Math.floor(Math.random() * guessWords.length)]
     questionEl.innerText = currentWord
   }
 
+  updateQuestion()
+  render()
+}
+const render = () => {
+  checkAnswer()
+  // wrongAnswers()
+}
+const checkAnswer = () => {
+  if (currentWord == inputValue) {
+    checkWinner()
+  } else {
+    return
+  }
+}
 
+const checkWinner = () => {
+  messageEl.innerText = "Congrats !! You're Genius"
+}
 
 // Events
 

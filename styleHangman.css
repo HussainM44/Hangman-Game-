@@ -1,0 +1,19 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+nav a {
+  text-decoration: none;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 25px;
+}
+nav a:hover {
+  background-color: #e20d0d70;
+}
