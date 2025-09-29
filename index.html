@@ -12,17 +12,30 @@
     <h1>Hang The Man</h1>
   </header>
   <body>
+    <div class="gallows">
+      <div class="base"></div>
+      <div class="vertical"></div>
+      <div class="horizontal"></div>
+      <div class="rope"></div>
+      <div class="head"></div>
+      <div class="body"></div>
+      <div class="armLeft"></div>
+      <div class="armRight"></div>
+      <div class="legLeft"></div>
+      <div class="legRight"></div>
+    </div>
     <section class="wordsContainer">
-      <h3 class="message">Message :</h3>
+      <h3 class="message">Message</h3>
       <div>
-        <h3 class="question">Word :</h3>
+        <h3 class="guessWord">Guess Word</h3>
       </div>
+
       <div>
-        <h3 class="incorrectWord">Missing :</h3>
+        <h3 class="wrongWord">Missing</h3>
       </div>
       <div>
         <h4><input class="myInput" type="text" /></h4>
-        <button onClick="saveInput()">Submit</button>
+        <button class="submit">Submit</button>
       </div>
     </section>
 

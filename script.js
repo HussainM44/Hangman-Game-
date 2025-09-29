@@ -1,83 +1,62 @@
-// Variables
-let guessWords
-let wordContainer
-let winner
+// VARIABLES
 let inputValue
-let currentWord
+let words
+let currentWords
+let correctGuesses = []
+
+let displayWords
+
+let messageEl = document.querySelector(".message")
+
+let guessWordEl = document.querySelector(".guessWord")
+
+let wrongWordEl = document.querySelector(".wrongWord")
+
+let myInputEl = document.querySelector(".myInput")
+
+let submitEl = document.querySelector(".submit")
+
+const bodyParts = [
+  document.querySelector(".head"),
+
+  document.querySelector(".body"),
+
+  document.querySelector(".armLeft"),
+
+  document.querySelector(".armRight"),
+
+  document.querySelector(".legLeft"),
+
+  document.querySelector(".legRight"),
+]
 
 const saveInput = () => {
-  inputValue = [myWordEl.value]
+  correctGuesses.push(myInputEl.value)
+
   render()
 }
-
-const questionEl = document.querySelector(".question")
-const missingEl = document.querySelector(".missing")
-const myWordEl = document.querySelector(".myInput")
-const messageEl = document.querySelector(".message")
-const submitEl = document.querySelector(".submit")
-const resetEl = document.querySelector(".reset")
-
-// Functions
-
 const init = () => {
-  guessWords = [
-    "ball",
-    "tree",
-    "fish",
-    "book",
-    "jump",
-    "hand",
-    "ring",
-    "duck",
-    "mask",
-    "glow",
-    "fork",
-    "pond",
-    "wind",
-    "bark",
-    "quiz",
-    "grub",
-    "hazy",
-    "knob",
-    "zest",
-    "wisp",
-    "lynx",
-    "jinx",
-    "vane",
-    "kite",
-    "wave",
-    "snow",
-    "salt",
-    "trap",
-    "lamp",
-    "frog",
-  ]
-
-  const updateQuestion = () => {
-    currentWord = guessWords[Math.floor(Math.random() * guessWords.length)]
-    questionEl.innerText = currentWord
-  }
-
-  updateQuestion()
+  words = ["ball"]
+  bodyParts.forEach((part) => (part.style.display = "none"))
+  messageEl.innerText = "Start Guessing"
   render()
 }
+
 const render = () => {
-  checkAnswer()
-  // wrongAnswers()
-}
-const checkAnswer = () => {
-  if (currentWord == inputValue) {
-    checkWinner()
-  } else {
-    return
-  }
+  updateWord()
 }
 
-const checkWinner = () => {
-  messageEl.innerText = "Congrats !! You're Genius"
+const updateWord = () => {
+  currentWords = words[Math.floor(Math.random() * words.length)]
+  displayWords = currentWords
+    .split("")
+    .map((word) => (correctGuesses.includes(word) ? word : "_"))
+    .join(" ")
+  guessWordEl.innerText = displayWords
 }
 
-// Events
+submitEl.addEventListener("click", () => {
+  saveInput()
+})
 
-// Last
 init()
