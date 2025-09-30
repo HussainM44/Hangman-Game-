@@ -3,6 +3,7 @@ let inputValue
 let words
 let currentWords
 let correctGuesses = []
+let wrongGuesses = []
 
 let displayWords
 
@@ -10,7 +11,7 @@ let messageEl = document.querySelector(".message")
 
 let guessWordEl = document.querySelector(".guessWord")
 
-let wrongWordEl = document.querySelector(".wrongWord")
+let missingEl = document.querySelector(".missing")
 
 let myInputEl = document.querySelector(".myInput")
 
@@ -44,6 +45,8 @@ const init = () => {
 
 const render = () => {
   updateWord()
+  checkWinner()
+  checkWord()
 }
 
 const updateWord = () => {
@@ -51,8 +54,25 @@ const updateWord = () => {
   displayWords = currentWords
     .split("")
     .map((word) => (correctGuesses.includes(word) ? word : "_"))
-    .join(" ")
+    .join("")
   guessWordEl.innerText = displayWords
+}
+
+const checkWinner = () => {
+  if (!displayWords.includes("_")) {
+    messageEl.innerText = "Winner"
+  }
+}
+
+const checkWord = () => {
+  const ranWord = currentWords.split("")
+  correctGuesses.map((word) => {
+    if (!word.includes(ranWord)) {
+      wrongGuesses.push(word)
+      missingEl.innerText = wrongGuesses
+    }
+    console.log(wrongGuesses)
+  })
 }
 
 submitEl.addEventListener("click", () => {
