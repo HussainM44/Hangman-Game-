@@ -85,6 +85,9 @@ const displayBody = () => {
       bodyParts[i - 1].style.display = "block"
     }
   }
+  if (wrongGuesses.length == 6) {
+    messageEl.innerText = "Lost"
+  }
 }
 
 submitEl.addEventListener("click", () => {
