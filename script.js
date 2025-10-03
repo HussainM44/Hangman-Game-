@@ -2,9 +2,9 @@
 let inputValue
 let words
 let currentWords
-let correctGuesses = []
+let guesses = []
 let wrongGuesses = []
-
+let ranW
 let displayWords
 
 let messageEl = document.querySelector(".message")
@@ -32,7 +32,7 @@ const bodyParts = [
 ]
 
 const saveInput = () => {
-  correctGuesses.push(myInputEl.value)
+  guesses.push(myInputEl.value)
 
   render()
 }
@@ -40,21 +40,31 @@ const init = () => {
   words = ["ball"]
   bodyParts.forEach((part) => (part.style.display = "none"))
   messageEl.innerText = "Start Guessing"
+  currentWords = words[Math.floor(Math.random() * words.length)]
+
   render()
 }
 
 const render = () => {
+  updateGuess()
   updateWord()
   checkWinner()
+
   checkWord()
 }
 
+const updateGuess = () => {
+  if (!currentWords.includes(myInputEl.value)) {
+    wrongGuesses.push(myInputEl.value)
+  }
+}
 const updateWord = () => {
-  currentWords = words[Math.floor(Math.random() * words.length)]
   displayWords = currentWords
     .split("")
-    .map((word) => (correctGuesses.includes(word) ? word : "_"))
-    .join("")
+    .map((word) => (guesses.includes(word) ? word : "_"))
+
+    .join(" ")
+
   guessWordEl.innerText = displayWords
 }
 
@@ -64,15 +74,12 @@ const checkWinner = () => {
   }
 }
 
-const checkWord = () => {
-  const ranWord = currentWords.split("")
-  correctGuesses.map((word) => {
-    if (!word.includes(ranWord)) {
-      wrongGuesses.push(word)
-      missingEl.innerText = wrongGuesses
-    }
-    console.log(wrongGuesses)
-  })
+const checkWord = (i) => {
+  ranW = currentWords
+    .split("")
+    .map((word, i) => (!word.includes(wrongGuesses[i]) ? wrongGuesses[i] : "_"))
+    .join(" ")
+  missingEl.innerText = ranW
 }
 
 submitEl.addEventListener("click", () => {
