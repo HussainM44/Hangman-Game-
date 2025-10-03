@@ -6,7 +6,6 @@ body {
 }
 
 /* Used help of AI for shape of Hangman */
-
 .gallows {
   position: relative;
   width: 200px;

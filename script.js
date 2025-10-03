@@ -4,6 +4,7 @@ let words
 let currentWords
 let guesses = []
 let wrongGuesses = []
+let correctGuess = []
 let ranW
 let displayWords
 
@@ -49,23 +50,26 @@ const render = () => {
   updateGuess()
   updateWord()
   checkWinner()
-
-  checkWord()
+  displayBody()
 }
 
 const updateGuess = () => {
-  if (!currentWords.includes(myInputEl.value)) {
+  if (currentWords.includes(myInputEl.value)) {
+    correctGuess.push(myInputEl.value)
+  } else {
     wrongGuesses.push(myInputEl.value)
   }
 }
 const updateWord = () => {
   displayWords = currentWords
     .split("")
-    .map((word) => (guesses.includes(word) ? word : "_"))
+    .map((word) => (correctGuess.includes(word) ? word : "_"))
 
     .join(" ")
 
   guessWordEl.innerText = displayWords
+
+  missingEl.innerText = wrongGuesses.join(" ")
 }
 
 const checkWinner = () => {
@@ -74,12 +78,13 @@ const checkWinner = () => {
   }
 }
 
-const checkWord = (i) => {
-  ranW = currentWords
-    .split("")
-    .map((word, i) => (!word.includes(wrongGuesses[i]) ? wrongGuesses[i] : "_"))
-    .join(" ")
-  missingEl.innerText = ranW
+const displayBody = () => {
+  console.log(wrongGuesses.length)
+  for (i = 1; i <= wrongGuesses.length; i++) {
+    if (wrongGuesses.length == i) {
+      bodyParts[i - 1].style.display = "block"
+    }
+  }
 }
 
 submitEl.addEventListener("click", () => {
