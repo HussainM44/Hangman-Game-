@@ -40,6 +40,7 @@ const bodyParts = [
 const saveInput = () => {
   if (myInputEl.value.length != 1) {
     messageEl.innerText = "Guess Single Letter Only"
+    return
   } else {
     guesses = myInputEl.value.toLocaleLowerCase()
   }
@@ -144,8 +145,10 @@ const displayBody = () => {
       bodyParts[i - 1].style.display = "block"
     }
   }
-  if (wrongGuesses.length == 6) {
+
+  if (wrongGuesses.length >= 7) {
     messageEl.innerText = "Lost"
+    guessWordEl.innerText = currentWords
   }
 }
 
