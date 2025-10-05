@@ -1,12 +1,11 @@
-// VARIABLES
-let inputValue
+// VARIABLES //
 let words
 let currentWords
 let pin
-let guesses = []
+let guesses
 let wrongGuesses = []
 let correctGuess = []
-let ranW
+
 let displayWords
 
 let messageEl = document.querySelector(".message")
@@ -35,9 +34,10 @@ const bodyParts = [
   document.querySelector(".legRight"),
 ]
 
+// FUNCTIONS //
 const saveInput = () => {
-  guesses.push(myInputEl.value)
-
+  guesses = myInputEl.value.toLocaleLowerCase()
+  console.log(guesses)
   render()
 }
 const init = () => {
@@ -57,7 +57,6 @@ const init = () => {
     "Sheep",
     "Pig",
     "Cow",
-    "Ox",
     "Yak",
     "Bat",
     "Rat",
@@ -84,14 +83,12 @@ const init = () => {
     "Finch",
     "Toad",
     "Frog",
-    "Newt",
     "Gecko",
     "Lizard",
     "Snake",
     "Ant",
     "Bee",
     "Wasp",
-    "Fly",
   ]
   bodyParts.forEach((part) => (part.style.display = "none"))
   messageEl.innerText = "Start Guessing"
@@ -110,12 +107,13 @@ const render = () => {
 }
 
 const updateGuess = () => {
-  if (currentWords.includes(myInputEl.value)) {
-    correctGuess.push(myInputEl.value)
+  if (currentWords.includes(guesses)) {
+    correctGuess.push(guesses)
   } else {
-    wrongGuesses.push(myInputEl.value)
+    wrongGuesses.push(guesses)
   }
 }
+
 const updateWord = () => {
   displayWords = currentWords
     .split("")
@@ -144,6 +142,8 @@ const displayBody = () => {
     messageEl.innerText = "Lost"
   }
 }
+
+// EVENTS //
 
 submitEl.addEventListener("click", () => {
   saveInput()
