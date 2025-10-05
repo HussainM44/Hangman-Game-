@@ -2,6 +2,7 @@
 let inputValue
 let words
 let currentWords
+let pin
 let guesses = []
 let wrongGuesses = []
 let correctGuess = []
@@ -17,6 +18,8 @@ let missingEl = document.querySelector(".missing")
 let myInputEl = document.querySelector(".myInput")
 
 let submitEl = document.querySelector(".submit")
+
+let resetEl = document.querySelector(".reset")
 
 const bodyParts = [
   document.querySelector(".head"),
@@ -39,59 +42,63 @@ const saveInput = () => {
 }
 const init = () => {
   words = [
-    "Canada",
-    "Mexico",
-    "Brazil",
-    "Argentina",
-    "Germany",
-    "France",
-    "Italy",
-    "Spain",
-    "Russia",
-    "China",
-    "Japan",
-    "South Korea",
-    "India",
-    "Australia",
-    "New Zealand",
-    "South Africa",
-    "Egypt",
-    "Nigeria",
-    "Kenya",
-    "Turkey",
-    "Saudi Arabia",
-    "United Arab Emirates",
-    "Israel",
-    "Indonesia",
-    "Thailand",
-    "Vietnam",
-    "Philippines",
-    "Malaysia",
-    "Singapore",
-    "Pakistan",
-    "Bangladesh",
-    "Ukraine",
-    "Poland",
-    "Netherlands",
-    "Sweden",
-    "Norway",
-    "Finland",
-    "Denmark",
-    "Switzerland",
-    "Austria",
-    "Belgium",
-    "Portugal",
-    "Greece",
-    "Colombia",
-    "Peru",
-    "Chile",
-    "Venezuela",
-    "Morocco",
+    "Cat",
+    "Dog",
+    "Horse",
+    "Lion",
+    "Tiger",
+    "Bear",
+    "Wolf",
+    "Deer",
+    "Moose",
+    "Fox",
+    "Zebra",
+    "Goat",
+    "Sheep",
+    "Pig",
+    "Cow",
+    "Ox",
+    "Yak",
+    "Bat",
+    "Rat",
+    "Mouse",
+    "Whale",
+    "Shark",
+    "Dolphin",
+    "Seal",
+    "Otter",
+    "Crab",
+    "Squid",
+    "Lobster",
+    "Snail",
+    "Clam",
+    "Eagle",
+    "Hawk",
+    "Falcon",
+    "Owl",
+    "Duck",
+    "Swan",
+    "Crow",
+    "Raven",
+    "Parrot",
+    "Finch",
+    "Toad",
+    "Frog",
+    "Newt",
+    "Gecko",
+    "Lizard",
+    "Snake",
+    "Ant",
+    "Bee",
+    "Wasp",
+    "Fly",
   ]
   bodyParts.forEach((part) => (part.style.display = "none"))
   messageEl.innerText = "Start Guessing"
-  currentWords = words[Math.floor(Math.random() * words.length)]
 
+  pin = words[Math.floor(Math.random() * words.length)]
+  currentWords = pin.toLocaleLowerCase()
+  console.log(currentWords)
   render()
 }
 
@@ -128,7 +135,6 @@ const checkWinner = () => {
 }
 
 const displayBody = () => {
-  console.log(wrongGuesses.length)
   for (i = 1; i <= wrongGuesses.length; i++) {
     if (wrongGuesses.length == i) {
       bodyParts[i - 1].style.display = "block"
@@ -141,6 +147,10 @@ const displayBody = () => {
 
 submitEl.addEventListener("click", () => {
   saveInput()
+})
+
+resetEl.addEventListener("click", () => {
+  init()
 })
 
 init()
