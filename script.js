@@ -21,6 +21,8 @@ let submitEl = document.querySelector(".submit")
 let resetEl = document.querySelector(".reset")
 
 const bodyParts = [
+  document.querySelector(".rope"),
+
   document.querySelector(".head"),
 
   document.querySelector(".body"),
@@ -36,8 +38,12 @@ const bodyParts = [
 
 // FUNCTIONS //
 const saveInput = () => {
-  guesses = myInputEl.value.toLocaleLowerCase()
-  console.log(guesses)
+  if (myInputEl.value.length != 1) {
+    messageEl.innerText = "Guess Single Letter Only"
+  } else {
+    guesses = myInputEl.value.toLocaleLowerCase()
+  }
+
   render()
 }
 const init = () => {
