@@ -5,6 +5,10 @@ body {
   height: 100%;
 }
 
+.reset {
+  margin-top: 10px;
+}
+
 /* Used help of AI for shape of Hangman */
 .gallows {
   position: relative;

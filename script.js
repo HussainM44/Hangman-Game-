@@ -38,6 +38,7 @@ const bodyParts = [
 
 // FUNCTIONS //
 const saveInput = () => {
+  messageEl.innerText = "Lets Guess !!!"
   if (myInputEl.value.length != 1) {
     messageEl.innerText = "Guess Single Letter Only"
     return
@@ -98,7 +99,7 @@ const init = () => {
     "Wasp",
   ]
   bodyParts.forEach((part) => (part.style.display = "none"))
-  messageEl.innerText = "Start Guessing"
+  messageEl.innerText = "Lets Guess !!!"
 
   pin = words[Math.floor(Math.random() * words.length)]
   currentWords = pin.toLocaleLowerCase()
@@ -114,7 +115,9 @@ const render = () => {
 }
 
 const updateGuess = () => {
-  if (currentWords.includes(guesses)) {
+  if (correctGuess.includes(guesses) || wrongGuesses.includes(guesses)) {
+    messageEl.innerText = "Already Guesses !! Try Again"
+  } else if (currentWords.includes(guesses)) {
     correctGuess.push(guesses)
   } else {
     wrongGuesses.push(guesses)
