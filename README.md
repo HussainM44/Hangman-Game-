@@ -2,6 +2,12 @@
 ***Play Game***
 To Play game, Random Word will already be chosen. You just have to Guess Word one by one , If anything guessed wrong or already guessed it will be displayed on the screen through Functions.
 
+
+***Here is Link to Surge Link to my Game***
+
+https://my-own-sandbox.surge.sh/
+
+
 # Operations
 
 ## HTML

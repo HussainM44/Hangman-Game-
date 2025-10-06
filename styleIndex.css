@@ -6,6 +6,19 @@ body {
   font-family: Arial, sans-serif;
   text-align: center;
 }
+header {
+  padding-left: 85px;
+}
+
+body,
+html {
+  display: flex;
+  width: 95%;
+  height: 90%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 nav a {
   text-decoration: none;
   background-color: #4caf50;
@@ -13,6 +26,7 @@ nav a {
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 25px;
+  margin-left: 85px;
 }
 nav a:hover {
   background-color: #e20d0d70;
