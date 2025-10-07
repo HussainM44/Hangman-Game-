@@ -1,19 +1,65 @@
+header {
+  color: silver;
+
+  font-family: "BBH Sans Hegarty", sans-serif;
+}
+
 body {
   display: grid;
   place-items: center;
-  background-color: #f0f0f0;
   height: 100%;
+}
+body,
+html {
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  height: 100%;
+}
+.cat {
+  font-size: x-large;
+}
+#pick {
+  font-size: larger;
+}
+.myInput {
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 4px 8px;
+  font-size: 15px;
+  width: 30%;
+  margin-left: 20px;
+  color: white;
+}
+
+.submit {
+  margin-top: 10px;
+  background-color: transparent;
+  text-decoration: none;
+  color: rgb(2, 71, 11);
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 15px;
+
+  margin-left: 30px;
 }
 
 .reset {
   margin-top: 10px;
-}
+  background-color: transparent;
+  text-decoration: none;
+  color: rgb(92, 0, 0);
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 15px;
 
+  margin-left: 30px;
+}
 /* Used help of AI for shape of Hangman */
 .gallows {
   position: relative;
   width: 200px;
-  height: 300px;
+  height: 270px;
 }
 
 /* Gallows structure */
@@ -37,7 +83,7 @@ body {
 .horizontal {
   position: absolute;
   left: 40px;
-  top: 40px;
+  top: 10px;
   width: 120px;
   height: 10px;
   background-color: #333;
@@ -46,7 +92,7 @@ body {
 .rope {
   position: absolute;
   left: 150px;
-  top: 50px;
+  top: 20px;
   width: 2px;
   height: 30px;
   background-color: #333;
@@ -54,7 +100,7 @@ body {
 
 .head {
   position: absolute;
-  top: 80px;
+  top: 50px;
   left: 133px;
   width: 30px;
   height: 30px;
@@ -65,7 +111,7 @@ body {
 
 .body {
   position: absolute;
-  top: 115px;
+  top: 84px;
   left: 149px;
   width: 2px;
   height: 60px;
@@ -74,7 +120,7 @@ body {
 
 .armLeft {
   position: absolute;
-  top: 145px;
+  top: 115px;
   left: 150px;
   width: 40px;
   height: 2px;
@@ -85,7 +131,7 @@ body {
 
 .armRight {
   position: absolute;
-  top: 145px;
+  top: 115px;
   left: 110px;
   width: 40px;
   height: 2px;
@@ -96,7 +142,7 @@ body {
 
 .legLeft {
   position: absolute;
-  top: 173px;
+  top: 143px;
   left: 150px;
   width: 40px;
   height: 2px;
@@ -107,7 +153,7 @@ body {
 
 .legRight {
   position: absolute;
-  top: 173px;
+  top: 143px;
   left: 110px;
   width: 40px;
   height: 2px;

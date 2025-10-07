@@ -37,17 +37,7 @@ const bodyParts = [
 ]
 
 // FUNCTIONS //
-const saveInput = () => {
-  messageEl.innerText = "Lets Guess !!!"
-  if (myInputEl.value.length != 1) {
-    messageEl.innerText = "Guess Single Letter Only"
-    return
-  } else {
-    guesses = myInputEl.value.toLocaleLowerCase()
-  }
 
-  render()
-}
 const init = () => {
   words = [
     "Cat",
@@ -98,15 +88,29 @@ const init = () => {
     "Bee",
     "Wasp",
   ]
+  guesses
+  wrongGuesses = []
+  correctGuess = []
   bodyParts.forEach((part) => (part.style.display = "none"))
   messageEl.innerText = "Lets Guess !!!"
 
   pin = words[Math.floor(Math.random() * words.length)]
   currentWords = pin.toLocaleLowerCase()
   console.log(currentWords)
+
+  saveInput()
+}
+const saveInput = () => {
+  messageEl.innerText = "Lets Guess !!!"
+  if (myInputEl.value != "" && myInputEl.value.length != 1) {
+    messageEl.innerText = "😤 Guess Single Letter Only 😤"
+    return
+  } else {
+    guesses = myInputEl.value.toLocaleLowerCase()
+  }
+
   render()
 }
-
 const render = () => {
   updateGuess()
   updateWord()
@@ -116,7 +120,7 @@ const render = () => {
 
 const updateGuess = () => {
   if (correctGuess.includes(guesses) || wrongGuesses.includes(guesses)) {
-    messageEl.innerText = "Already Guesses !! Try Again"
+    messageEl.innerText = "⛔⛔ Already Guessed !! Try Again ⛔⛔ "
   } else if (currentWords.includes(guesses)) {
     correctGuess.push(guesses)
   } else {
@@ -138,21 +142,26 @@ const updateWord = () => {
 
 const checkWinner = () => {
   if (!displayWords.includes("_")) {
-    messageEl.innerText = "Winner"
+    messageEl.innerText = "🎉🎉 Congrats !! You Genius 🎉🎉"
   }
 }
 
 const displayBody = () => {
-  for (i = 1; i <= wrongGuesses.length; i++) {
+  for (i = 0; i <= wrongGuesses.length; i++) {
     if (wrongGuesses.length == i) {
-      bodyParts[i - 1].style.display = "block"
+      bodyParts[i].style.display = "block"
     }
   }
 
-  if (wrongGuesses.length >= 7) {
-    messageEl.innerText = "Lost"
+  if (wrongGuesses.length >= 6) {
+    messageEl.innerText = "LOSER !!!👎👎"
+    messageEl.style.color = "red"
     guessWordEl.innerText = currentWords
+    guessWordEl.style.color = "green"
   }
+
+  console.log(wrongGuesses.length)
+  console.log(correctGuess.length)
 }
 
 // EVENTS //
@@ -166,3 +175,6 @@ resetEl.addEventListener("click", () => {
 })
 
 init()
+
+// Colors not changing after reset
+// input being saved after pressing reset

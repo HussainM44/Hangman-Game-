@@ -9,9 +9,9 @@
   </head>
 
   <header>
-    <h1>Hang The Man</h1>
+    <h1>Hang Man</h1>
   </header>
-  <body>
+  <body style="background-image: url(det.gif)">
     <div class="gallows">
       <div class="base"></div>
       <div class="vertical"></div>
@@ -25,16 +25,18 @@
       <div class="legRight"></div>
     </div>
     <section class="wordsContainer">
-      <h3>Category : Animals</h3>
-      <h3 class="message">Message</h3>
+      <h3 class="cat">Category : Animals</h3>
+      <h3 id="pick" class="message">Message</h3>
       <div>
-        <h3 class="guessWord">Guess Word</h3>
+        <h3 id="pick" class="guessWord">Guess Word</h3>
       </div>
       <div>
-        <h3 class="missing">Missing</h3>
+        <h3 id="pick" class="missing">Missing</h3>
       </div>
+    </section>
+    <section class="buttons">
+      <h4><input class="myInput" type="text" /></h4>
       <div>
-        <h4><input class="myInput" type="text" /></h4>
         <button class="submit">Submit</button>
       </div>
       <div>
