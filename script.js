@@ -88,18 +88,23 @@ const init = () => {
     "Bee",
     "Wasp",
   ]
+
   guesses
   wrongGuesses = []
   correctGuess = []
+
+  guessWordEl.style.color = "black"
+  messageEl.style.color = "black"
   bodyParts.forEach((part) => (part.style.display = "none"))
+  myInputEl.value = ""
   messageEl.innerText = "Lets Guess !!!"
 
   pin = words[Math.floor(Math.random() * words.length)]
   currentWords = pin.toLocaleLowerCase()
-  console.log(currentWords)
 
   saveInput()
 }
+
 const saveInput = () => {
   messageEl.innerText = "Lets Guess !!!"
   if (myInputEl.value != "" && myInputEl.value.length != 1) {
@@ -111,6 +116,7 @@ const saveInput = () => {
 
   render()
 }
+
 const render = () => {
   updateGuess()
   updateWord()
@@ -159,9 +165,6 @@ const displayBody = () => {
     guessWordEl.innerText = currentWords
     guessWordEl.style.color = "green"
   }
-
-  console.log(wrongGuesses.length)
-  console.log(correctGuess.length)
 }
 
 // EVENTS //
@@ -175,6 +178,3 @@ resetEl.addEventListener("click", () => {
 })
 
 init()
-
-// Colors not changing after reset
-// input being saved after pressing reset
