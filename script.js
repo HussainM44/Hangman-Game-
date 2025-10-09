@@ -6,7 +6,8 @@ let pin
 let guesses
 let wrongGuesses = []
 let correctGuess = []
-
+let winGame
+let loseGame
 let displayWords
 
 let messageEl = document.querySelector(".message")
@@ -93,7 +94,8 @@ const init = () => {
   guesses
   wrongGuesses = []
   correctGuess = []
-
+  winGame = false
+  loseGame = false
   guessWordEl.style.color = "white"
   messageEl.style.color = "white"
   bodyParts.forEach((part) => (part.style.display = "none"))
@@ -122,8 +124,8 @@ const render = () => {
   updateGuess()
   updateWord()
   checkWinner()
-  displayBody()
   gameOver()
+  displayBody()
 }
 
 const updateGuess = () => {
@@ -151,31 +153,33 @@ const updateWord = () => {
 const checkWinner = () => {
   if (!displayWords.includes("_")) {
     messageEl.innerText = "🎉🎉 Congrats !! You Genius 🎉🎉"
+    winGame = true
   }
 }
 
 const displayBody = () => {
-  for (i = 0; i <= wrongGuesses.length; i++) {
+  let i = 0
+  while (i <= 6) {
     if (wrongGuesses.length == i) {
       bodyParts[i].style.display = "block"
     }
+    i++
   }
 
-  if (wrongGuesses.length >= 6) {
+  if (wrongGuesses.length > 5) {
     messageEl.innerText = "LOSER !!!👎👎"
     messageEl.style.color = "red"
     guessWordEl.innerText = currentWords
     guessWordEl.style.color = "green"
+    loseGame = true
   }
 }
 
-const gameOver = () => {
-  let i = 6
-  if (bodyParts[i].style.display == "block") {
-    myInputEl.value = ""
+gameOver = () => {
+  if (winGame || loseGame) {
+    submitEl.disabled = true
   }
 }
-
 // EVENTS //
 
 submitEl.addEventListener("click", () => {
