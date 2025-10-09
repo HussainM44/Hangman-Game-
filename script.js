@@ -1,5 +1,6 @@
 // VARIABLES //
 let words
+let category
 let currentWords
 let pin
 let guesses
@@ -93,8 +94,8 @@ const init = () => {
   wrongGuesses = []
   correctGuess = []
 
-  guessWordEl.style.color = "black"
-  messageEl.style.color = "black"
+  guessWordEl.style.color = "white"
+  messageEl.style.color = "white"
   bodyParts.forEach((part) => (part.style.display = "none"))
   myInputEl.value = ""
   messageEl.innerText = "Lets Guess !!!"
@@ -122,6 +123,7 @@ const render = () => {
   updateWord()
   checkWinner()
   displayBody()
+  gameOver()
 }
 
 const updateGuess = () => {
@@ -164,6 +166,13 @@ const displayBody = () => {
     messageEl.style.color = "red"
     guessWordEl.innerText = currentWords
     guessWordEl.style.color = "green"
+  }
+}
+
+const gameOver = () => {
+  let i = 6
+  if (bodyParts[i].style.display == "block") {
+    myInputEl.value = ""
   }
 }
 
